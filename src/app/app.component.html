@@ -1,7 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<header>
-</header>
-<h2>Become one with inner selfness</h2>
-<tracker-field></tracker-field>
+<tracker-splash *ngIf='!accessGranted'></tracker-splash>
+
+<div *ngIf='accessGranted'>
+  <header></header>
+  <h2>Become one with inner selfness</h2>
+  <tracker-field></tracker-field>
+</div>
 
 <router-outlet></router-outlet>

@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FieldComponent } from './field/field.component';
+import { SplashComponent } from './splash/splash.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FieldComponent,
+    SplashComponent,
   ],
   imports: [
     BrowserModule,
