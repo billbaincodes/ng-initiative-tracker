@@ -1,10 +1,55 @@
 
 .splash {
-  width: 300rem;
-  height: 300rem;
-  background-color: blueviolet;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20%;
 }
 
 h3 {
   margin: none;
+}
+
+.dice {
+  width: 10rem;
+  animation-name: example;
+  animation-duration: 4s
+}
+
+div {
+  // -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  // animation-name: example;
+  animation-duration: 4s;
+}
+
+@keyframes tumble {
+  from { transform: rotate(0degrees); }
+  to { transform: rotate(360degrees); }
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
+/* Standard syntax */
+@keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
+#loading {
+  -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+  from {
+      -webkit-transform: rotate(0deg);
+  }
+  to {
+      -webkit-transform: rotate(359deg);
+  }
 }
