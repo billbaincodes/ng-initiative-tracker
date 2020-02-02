@@ -11,5 +11,8 @@ export class AppComponent {
   accessGranted:boolean = false
 
 
-
+  onGrant() {
+    console.log('parent granted')
+    this.accessGranted = true
+  }
 }

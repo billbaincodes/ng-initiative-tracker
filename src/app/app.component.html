@@ -1,5 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<tracker-splash *ngIf='!accessGranted'></tracker-splash>
+<tracker-splash 
+  *ngIf='!accessGranted'
+  (access)='onGrant()'>
+</tracker-splash>
 
 <div *ngIf='accessGranted'>
   <header></header>
