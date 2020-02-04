@@ -12,10 +12,23 @@ export class SplashComponent implements OnInit {
 
   @Output() access = new EventEmitter<boolean>();
 
-  constructor() { }
+  spinSpeed = 0.01;
+
+  constructor() {
+    // this.createComponentInitCallback = this.createComponentInitCallback.bind(this);
+  }
 
   ngOnInit() {
     this.pixar()
+  }
+
+  spin(){
+    if(this.spinSpeed < 0.21) {
+      this.spinSpeed += 0.05
+    } else {
+      this.spinSpeed = 0.01
+    }
+    console.log('spinSpeed', this.spinSpeed );
   }
 
   pixar() {
@@ -25,19 +38,28 @@ export class SplashComponent implements OnInit {
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize( window.innerWidth, window.innerHeight );
     document.body.appendChild( renderer.domElement );
-    
-    var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-    var material = new THREE.MeshBasicMaterial( { color: 0x00ff99 } );
-    var cube = new THREE.Mesh( geometry, material );
-    scene.add( cube );
+
+    let poly = new THREE.IcosahedronGeometry(2, 0)
+
+    // var geometry = new THREE.BoxBufferGeometry( 100, 100, 100 );
+    var edges = new THREE.EdgesGeometry( poly );
+    var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: '#23FF00' } ) );
+    scene.add( line );
+
+    var material = new THREE.MeshBasicMaterial();
+    var cube = new THREE.Mesh( poly, material );
+    // scene.add( cube );
     
     camera.position.z = 5;
     
-    var animate = function () {
+    const animate = () => {
       requestAnimationFrame( animate );
     
       cube.rotation.x += 0.01;
       cube.rotation.y += 0.01;
+
+      line.rotation.x += 0.01;
+      line.rotation.y += this.spinSpeed;
     
       renderer.render( scene, camera );
     };
